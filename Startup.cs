@@ -67,11 +67,11 @@ namespace WebAPIsDemo
                     {
                         Implicit = new OpenApiOAuthFlow()
                         {
-                            AuthorizationUrl = new Uri("https://login.microsoftonline.com/ad4a74db-0a1f-45d7-a885-9247bc705fd8/oauth2/v2.0/authorize"),
-                            TokenUrl=new Uri("https://login.microsoftonline.com/ad4a74db-0a1f-45d7-a885-9247bc705fd8/oauth2/v2.0/token"),
+                            AuthorizationUrl = new Uri("https://login.microsoftonline.com/[Tenant]/oauth2/v2.0/authorize"),
+                            TokenUrl=new Uri("https://login.microsoftonline.com/[Tenant]/oauth2/v2.0/token"),
                             Scopes=new Dictionary<string, string>
                             {
-                                { "059f46a3-9950-4e0b-aef0-bf3230ef89ed/user_impersonation", "Reads the Weather forecast" }
+                                { "[clientId]/user_impersonation", "Reads the Weather forecast" }
                             }
                         }
                     }
@@ -106,8 +106,8 @@ namespace WebAPIsDemo
                 app.UseSwaggerUI(c => {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIsDemo v1");
                     //c.RoutePrefix = string.Empty;
-                    c.OAuthClientId("059f46a3-9950-4e0b-aef0-bf3230ef89ed");
-                    c.OAuthClientSecret("ycH7Q~QcmUQObPIXGYLyr4In6zfMFqPPcy9Ag");                    
+                    c.OAuthClientId("clientId");
+                    c.OAuthClientSecret("secret");                    
                     c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
                     });
             }
